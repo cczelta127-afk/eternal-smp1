@@ -1,5 +1,16 @@
 import discord, os, aiohttp
 from discord.ext import commands
+from flask import Flask
+import threading
+
+app = Flask('')
+@app.route('/')
+def home(): return "Eternal SMP Bot is Online!"
+
+def run_flask():
+    app.run(host='0.0.0.0', port=10000)
+
+threading.Thread(target=run_flask).start()
 
 TOKEN = os.getenv("TOKEN")
 API_KEY = os.getenv("API_KEY")
